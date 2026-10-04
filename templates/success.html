@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome - CTF</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #1a1024; color: #e9e4f0;
+      display: flex; align-items: center; justify-content: center;
+      height: 100vh; margin: 0;
+    }
+    .card {
+      background: #241835; padding: 2.5rem; border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 400px; text-align: center;
+    }
+    h1 { color: #4ade80; }
+    .user { color: #a78bca; font-size: 0.9rem; margin-bottom: 1.2rem; }
+    a.btn {
+      display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1.2rem;
+      background: #c084fc; color: #1a1024; border-radius: 6px;
+      text-decoration: none; font-weight: bold;
+    }
+    a.btn:hover { background: #a855f7; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    {% if role == "admin" %}
+      <h1>✅ Welcome, admin!</h1>
+      <p class="user">Logged in as <b>{{ username }}</b></p>
+      <a class="btn" href="/admin-settings">Go to Admin Settings</a>
+    {% else %}
+      <h1>👋 Welcome, {{ username }}</h1>
+      <p class="user">You're in, but you're not admin. No flag for you.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

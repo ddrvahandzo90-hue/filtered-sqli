@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filtered Login - CTF</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #1a1024;
+      color: #e9e4f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #241835;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      width: 340px;
+    }
+    h1 { font-size: 1.4rem; margin-bottom: 0.3rem; color: #c084fc; }
+    p.sub { font-size: 0.85rem; color: #a78bca; margin-bottom: 1.5rem; }
+    label { display: block; font-size: 0.8rem; margin-bottom: 0.3rem; color: #d8cdea; }
+    input {
+      width: 100%; padding: 0.6rem; margin-bottom: 1rem;
+      border-radius: 6px; border: 1px solid #4c3a66;
+      background: #1a1024; color: #e9e4f0; box-sizing: border-box;
+    }
+    button {
+      width: 100%; padding: 0.7rem; border: none; border-radius: 6px;
+      background: #c084fc; color: #1a1024; font-weight: bold; cursor: pointer;
+    }
+    button:hover { background: #a855f7; }
+    .error {
+      background: #450a3a; color: #f0abfc; padding: 0.6rem; border-radius: 6px;
+      margin-bottom: 1rem; font-size: 0.85rem; word-break: break-word;
+    }
+    .hint { margin-top: 1rem; font-size: 0.75rem; color: #7c6a94; }
+    .badge {
+      display: inline-block; background: #3b0764; color: #e9d5ff;
+      font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">🛡️ Security Filter Enabled</span>
+    <h1>🔐 Filtered Login</h1>
+    <p class="sub">We patched the SQLi bug by blocking "OR". Try all you want.</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="/login">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="off" required>
+
+      <label for="password">Password</label>
+      <input type="text" id="password" name="password" autocomplete="off" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="hint">This was made by Prabobo.</div>
+  </div>
+</body>
+</html>

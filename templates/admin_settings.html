@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Settings - CTF</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #1a1024; color: #e9e4f0;
+      display: flex; align-items: center; justify-content: center;
+      height: 100vh; margin: 0;
+    }
+    .card {
+      background: #241835; padding: 2.5rem; border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 460px;
+    }
+    h1 { color: #c084fc; font-size: 1.3rem; margin-bottom: 0.2rem; }
+    .user { color: #a78bca; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 1.2rem; }
+    td { padding: 0.5rem 0; border-bottom: 1px solid #4c3a66; font-size: 0.85rem; }
+    td.key { color: #a78bca; width: 40%; }
+    .secret-box {
+      background: #3b0764; color: #e9d5ff; padding: 0.9rem; border-radius: 8px;
+      font-family: monospace; word-break: break-all; font-size: 0.85rem;
+    }
+    .note { margin-top: 0.8rem; font-size: 0.75rem; color: #7c6a94; }
+    a { color: #c084fc; text-decoration: none; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>⚙️ Admin Settings</h1>
+    <p class="user">Session: <b>{{ username }}</b></p>
+
+    <table>
+      <tr><td class="key">Site name</td><td>Filtered Login CTF</td></tr>
+      <tr><td class="key">WAF mode</td><td>blacklist (word "OR")</td></tr>
+      <tr><td class="key">API secret key (hex)</td><td></td></tr>
+    </table>
+
+    <div class="secret-box">{{ flag_hex }}</div>
+    <p class="note">⚠️ This value is hex-encoded. Decode it to get the real secret.</p>
+
+    <p style="margin-top:1.2rem;"><a href="/logout">Logout</a></p>
+  </div>
+</body>
+</html>
